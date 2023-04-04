@@ -1,0 +1,80 @@
+﻿@page "~/manager/apply"
+@inject IAuthorizationService Auth
+@inject ManagerLocalizer Localizer
+@{
+    ViewBag.Title = Localizer.Alias["Apply"];
+    ViewBag.MenuItem = "Apply";
+}
+@section script
+{
+    <script src="~/manager/assets/js/piranha.apply.min.js"></script>
+    <script>
+        piranha.apply.load();
+//        piranha.permissions.load(function () {
+//            piranha.contact.load();
+//        });
+    </script>
+}
+
+<div id="apply">
+    <div class="top">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">@Localizer.Menu["Settings"]</li>
+                <li class="breadcrumb-item active" aria-current="page">@Localizer.Menu["Apply"]</li>
+            </ol>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="top-nav">
+                <div v-if="sites.length > 1" class="dropdown d-inline" v-if="sites.length > 1">
+                    <button class="btn btn-primary btn-labeled dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="btn-label">
+                            <i class="fas fa-globe"></i>
+                        </span>
+                        {{ siteTitle }}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" li v-for="site in sites" v-on:click.prevent="load(site.id)">{{ site.title }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app" :class="{ ready: !loading }">
+        <div class="container-fluid">
+            <div class="row">
+                <div v-if="items.length !== 0" class="col">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Vị trị ứng tuyển</th>
+                                <th>CV</th>
+                                <th>Giới thiệu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in items">
+                                <td><code>{{ item.applyName }}</code></td>
+                                <td><code>{{ item.applyEmail }}</code></td>
+                                <td><code>{{ item.applyPhone }}</code></td>
+                                <td><code>{{ item.applyJob }}</code></td>
+                                <td><a :href="'/uploads/' + item.applyCV">{{ item.applyCV }}</a></td>
+                                <td><code>{{ item.applyIntro }}</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div v-else class="col">
+                    <div class="empty-info">
+                        <p>@Localizer.General["Looks like there's no items here. Click on the button above to get started!"]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@using Microsoft.EntityFrameworkCore.Query
+@using Piranha.Models
+@model MvcWeb.Models.CategoryPage
+@{
+    ViewBag.Title = Model.Title;
+    var homeNews = (List<DynamicPost>)ViewBag.Posts;
+    var host = (string) ViewBag.Host;
+}
+@section head{
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            height: 55px;
+        }
+    </style>
+}
+<div id="news">
+
+    <div class="banner">
+        <div class="img-container">
+            <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+            <div class="img-centered-title">@Model.Banner.Title </div>
+            @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+            {
+                <div class="img-centered-hr">
+                    <img alt="" src="/images/hr.png">
+                </div>
+            }
+        </div>
+
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in homeNews)
+                {
+                    var shareFb = "https://www.facebook.com/sharer/sharer.php?u=" + host + @item.Permalink;
+                    var shareTw = "https://twitter.com/intent/tweet?text=" + host + @item.Permalink;
+                    <div class="col-lg-4 col-md-6 m-b-30">
+
+                        <div class="news-border wow zoomIn">
+                            <div class="img-container">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Regions.Hero.PrimaryImage.Media?.PublicUrl ?? "")"/>
+                                </a>
+                                <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                            </div>
+                            <div class="news-title">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <h2>
+                                        @if (item.Title.Length > 35)
+                                        {
+                                            @(item.Title.Substring(0, 35) + "...")
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+                                    </h2>
+                                </a>
+                                <hr>
+                                <span class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</span>
+                                <h5 class="float-right share-social">
+                                    <div class="share-button">
+                                        <a href="@shareFb" target="_blank"> <i class='fab fa-facebook-f'></i> </a>
+                                        <a href="@shareTw" target="_blank"> <i class='fab fa-twitter'></i> </a>
+                                    </div>
+                                    <img alt="" class="img-fluid" src="/images/icons/ic_share_24px.png"/>
+                                </h5>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

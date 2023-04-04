@@ -1,0 +1,193 @@
+@using MvcWeb.Models
+@using Piranha.Models
+@model MvcWeb.Models.BlogPost
+@{
+    ViewBag.Title = Model.Title;
+    var listCategories = (List<Taxonomy>)ViewBag.ListCategories;
+    var listRelates = (List<BlogPost>)ViewBag.ListRelates;
+    var host = (string)ViewBag.Host;
+    var shareFb = "https://www.facebook.com/sharer/sharer.php?u=" + host + Model.Permalink;
+    var shareTw = "https://twitter.com/intent/tweet?text=" + host + Model.Permalink;
+    var urlLang = (string) ViewBag.UrlLang;
+    var urlNews = urlLang.Contains("/en") ? (urlLang + "/news") : (urlLang + "/tin-tuc");
+
+    string cate = "Danh mục";
+    string featured = "Bài viết nổi bật";
+    string tags = "Từ khoá";
+    string related = "Tin liên quan";
+    string more = "Xem thêm";
+    if (urlLang.Contains("/en"))
+    {
+        cate = "Categories";
+        featured = "Featured Post";
+        tags = "Tags";
+        related = "Related Post";
+        more = "More";
+    }
+}
+<div id="news-detail">
+    <div class="banner">
+        <div class="img-container">
+            <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+            <div class="img-centered-title">@Model.Banner.Title </div>
+            @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+            {
+                <div class="img-centered-hr">
+                    <img alt="" src="/images/hr.png">
+                </div>
+            }
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 m-t-40" id="body-content">
+                    <a class="button-gradient-blue text-white text-uppercase">@Model.Category.Title</a>
+                    <h1 class="m-t-30 font-size-30">@Model.Title</h1>
+                    <div class="text-uppercase news-date ">@Model.Published.Value.ToString("dd-MM-yyyy")</div>
+                    <hr>
+                    @Html.DisplayFor(m => m.Blocks)
+                    <hr>
+                    <a href="@shareFb" target="_blank"><i class="fab fa-facebook-square fa-3x m-r-10"></i></a>
+                    <a href="@shareTw" target="_blank"><i class="fab fa-twitter-square fa-3x m-r-10"></i></a>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="row m-t-30">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" name="keyword" id="searchKey" class="form-control input-search" placeholder="Search"> <i class="fas fa-search m-b-3 icon-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-md-12">
+                            <div class="menu-right">
+                                <span class="float-left">@cate </span>
+                                <span class="float-right hr-gray"></span>
+                                <span class="float-right hr-blue"></span>
+
+                            </div>
+                            <div class="menu-content">
+                                <ul>
+                                    @foreach (var item in listCategories)
+                                    {
+                                        var url =  item.Slug;
+                                        <li>
+                                            <a title="" href="@url">@item.Title</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-md-12">
+                            <div class="menu-right">
+                                <span class="float-left">@featured </span>
+                                <span class="float-right hr-gray"></span>
+                                <span class="float-right hr-blue"></span>
+
+                            </div>
+                            @foreach (var item in listRelates)
+                            {
+                                <div class="row m-b-10">
+                                    <div class="col-md-4 col-sm-4 col-4">
+                                        <img alt="" class="img-fluid h-65" src="@Url.Content(item.Hero.PrimaryImage.Media?.PublicUrl ?? "")">
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-8">
+                                        <div>
+                                            <a href="@item.Permalink" title="@item.Title">
+                                                @if (item.Title.Length > 40)
+                                                {
+                                                    @(item.Title.Substring(0, 40) + "...")
+                                                }
+                                                else
+                                                {
+                                                    @item.Title
+                                                }
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <span class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-md-12">
+                            <div class="menu-right">
+                                <span class="float-left">@tags </span>
+                                <span class="float-right hr-gray"></span>
+                                <span class="float-right hr-blue"></span>
+
+                            </div>
+                            <div class="row float-left">
+                                @foreach (var item in Model.Tags)
+                                {
+                                    var url = item.Slug;
+                                    <a title="" href="@url" class="form-control input-tag">@item.Title</a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="related">
+        <div class="container">
+            <div class="row p-15-0">
+                <div class="col-md-12">
+                    <h2 class="who-span-title float-left text-dark">@related</h2>
+                    <a title="" href="@urlNews" class="button float-right text-dark">@more <img alt="" src="/images/icons/arrow-right-black.png"></a>
+                </div>
+            </div>
+
+            <div class="row p-15-0">
+                @foreach (var item in listRelates)
+                {
+                    var shareFb2 = "https://www.facebook.com/sharer/sharer.php?u=" + host + @item.Permalink;
+                    var shareTw2 = "https://twitter.com/intent/tweet?text=" + host + @item.Permalink;
+                    <div class="col-lg-4 col-md-6 p-b-10">
+                        <div class="news-border wow zoomIn">
+                            <div class="img-container">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Hero.PrimaryImage.Media?.PublicUrl ?? "")" />
+                                </a>
+                                <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                            </div>
+                            <div class="news-title">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <h4>
+                                        @if (item.Title.Length > 35)
+                                        {
+                                            @(item.Title.Substring(0, 35) + "...")
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+                                    </h4>
+                                </a>
+                                <hr>
+                                <span class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</span>
+                                <h5 class="float-right share-social">
+                                    <div class="share-button">
+                                        <a href="@shareFb2" target="_blank"> <i class='fab fa-facebook-f'></i> </a>
+                                        <a href="@shareTw2" target="_blank"> <i class='fab fa-twitter'></i> </a>
+                                    </div>
+                                    <img alt="" class="img-fluid" src="./images/icons/ic_share_24px.png" />
+                                </h5>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+﻿@model List<MvcWeb.Models.BlogPost>
+@{
+    var fb = (string) ViewBag.LinkFb;
+    var tw = (string) ViewBag.LinkTw;
+    var ins = (string) ViewBag.LinkIns;
+}
+<input type="hidden" value="@WebApp.Site.Sitemap[0].Permalink" id="url-language"/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <img alt="" class="img-fluid footer-logo" src="~/images/logos/logo_idj2.svg"/>
+            <div class="m-b-10">
+                <span class="footer-span-title">@ViewBag.AddressTitle </span>
+                <span class="footer-span-content">@ViewBag.Address</span>
+            </div>
+            <div class="m-b-10">
+                <span class="footer-span-title">@ViewBag.MobileTitle</span>
+                <span class="footer-span-content">@ViewBag.Mobile</span>
+            </div>
+            <div class="m-b-10">
+                <span class="footer-span-title">@ViewBag.EmailTitle </span>
+                <span class="footer-span-content">@ViewBag.Email</span>
+            </div>
+            <div class="m-b-10">
+                <span class="footer-span-title">
+                    <a title="" href="@fb" class="m-r-10">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a title="" href="@tw" class="m-r-10">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a title="" href="@ins" class="m-r-10">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-6">
+            <div class="footer-span">@WebApp.Site.Sitemap[1].Title </div>
+            @if (WebApp.Site.Sitemap[2].Items.Any())
+            {
+                @foreach (var sub in WebApp.Site.Sitemap[1].Items)
+                {
+                    <div class="m-b-10">
+                        <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="m-b-10">
+                    <a title="" href="@WebApp.Site.Sitemap[1].Permalink" class="footer-span-content">@WebApp.Site.Sitemap[1].Title</a>
+                </div>
+            }
+        </div>
+        <div class="col-md-2 col-sm-6">
+            <div class="footer-span">@WebApp.Site.Sitemap[2].Title </div>
+            @if (WebApp.Site.Sitemap[2].Items.Any())
+            {
+                @foreach (var sub in WebApp.Site.Sitemap[2].Items)
+                {
+                    <div class="m-b-10">
+                        <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="m-b-10">
+                    <a title="" href="@WebApp.Site.Sitemap[2].Permalink" class="footer-span-content">@WebApp.Site.Sitemap[2].Title</a>
+                </div>
+            }
+        </div>
+        <div class="col-md-2 col-sm-6">
+            <div class="footer-span">@WebApp.Site.Sitemap[3].Title </div>
+            @if (WebApp.Site.Sitemap[3].Items.Any())
+            {
+                @foreach (var sub in WebApp.Site.Sitemap[3].Items)
+                {
+                    <div class="m-b-10">
+                        <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="m-b-10">
+                    <a title="" href="@WebApp.Site.Sitemap[3].Permalink" class="footer-span-content">@WebApp.Site.Sitemap[3].Title</a>
+                </div>
+            }
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <div class="footer-span">@WebApp.Site.Sitemap[4].Title </div>
+            @foreach (var item in Model)
+            {
+                <div class="row p-5-0">
+                    <div class="col-md-4 col-sm-4 col-4">
+                        <img alt="" class="img-fluid m-h-100" src="@Url.Content(item.Hero.PrimaryImage.Media?.PublicUrl)"/>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-8">
+                        <a title="@item.Title" href="@item.Permalink" class="footer-span-content">
+                            @if (item.Title.Length > 17)
+                            {
+                                @(item.Title.Substring(0, 17) + "...")
+                                ;
+                            }
+                            else
+                            {
+                                @item.Title
+                            }
+                        </a>
+                        <div class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="row copy-right">
+        <div class="col-md-12">
+            Copyright © @DateTime.Now.Year IDJ Viet Nam. All Rights Reserved
+        </div>
+    </div>
+</div>

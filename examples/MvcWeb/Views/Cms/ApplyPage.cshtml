@@ -1,0 +1,74 @@
+﻿@model MvcWeb.Models.ApplyPage
+@{
+    ViewBag.Title = Model.Title;
+    string urlLang = (string) ViewBag.UrlLang;
+    string headerName = "NHẬN CÔNG VIỆC NGAY";
+    string titleName = "Nộp đơn ứng tuyển";
+    string apply = "ỨNG TUYỂN";
+    string support = "Hỗ trợ định dạng *.doc, *.docx, *.pdf và không quá 2MB";
+    if (urlLang.Contains("/en"))
+    {
+        headerName = "GET JOB NOW";
+        titleName = "Quick application";
+        apply = "Apply Now";
+        support = "Supports * .doc, * .docx, * .pdf format and no more than 2MB";
+    }
+}
+
+<div class="banner">
+    <div class="img-container">
+        <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+        <div class="img-centered-title">@Model.Banner.Title </div>
+        @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+        {
+            <div class="img-centered-hr">
+                <img alt="" src="/images/hr.png">
+            </div>
+        }
+    </div>
+</div>
+
+<div class="apply text-center m-t-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h5 class="who-span-title">@headerName</h5>
+                <h1>@titleName</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group m-t-40">
+                    <input type="text" id="apply-name" class="form-control input-bg" placeholder="Họ tên / Name *" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="apply-email" class="form-control input-bg" placeholder="Email *" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="apply-mobile" class="form-control input-bg" placeholder="Số điện thoại / Mobile *" />
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("apply-job", new SelectList(ViewBag.ListPosts, "Value", "Text"), new { @class = "form-control input-bg" })
+                </div>
+                <div class="form-group custom-file">
+                    <input type="file" class="" id="customFile">
+                    <label class="custom-file-label text-left input-bg" id="customInputFile" for="customFile">CV / Porfolio </label>
+
+                </div>
+                <div class="apply-des text-left">@support</div>
+                <div class="form-group m-t-10 m-b-40">
+                    <textarea type="text" id="apply-intro" class="form-control input-bg" placeholder="Tự giới thiệu bản thân / Introduce your self"></textarea>
+
+                </div>
+                <a href="#" id="apply-cv" class="button-gradient-blue text-uppercase text-white m-b-30">@apply<img alt=""  src="/images/icons/arrow-right-white.png"></a>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"><img alt=""  class="img-fluid" src="/images/recruits/recruitment.png"></div>
+        </div>
+    </div>
+</div>

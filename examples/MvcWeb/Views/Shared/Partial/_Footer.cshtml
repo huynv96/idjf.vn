@@ -1,0 +1,137 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <img alt="" class="img-fluid footer-logo" src="~/images/logos/logo_idj2.svg" />
+            <div>
+                <span class="footer-span-title">Trụ sở: </span>
+                <span class="footer-span-content">Tầng 3 Grand Plza, 117 Trần Duy Hưng, Q. Cầu Giấy, TP Hà Nội</span>
+            </div>
+            <div>
+                <span class="footer-span-title">Tel: </span>
+                <span class="footer-span-content">(84-4) 3555.8999</span>
+            </div>
+            <div>
+                <span class="footer-span-title">Email: </span>
+                <span class="footer-span-content">contact@idji.vn</span>
+            </div>
+            <div>
+                <span class="footer-span-title">
+                    <a title="" href="#" class="m-r-10">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a title="" href="#" class="m-r-10">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a title="" href="#" class="m-r-10">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        @foreach (var item in WebApp.Site.Sitemap)
+        {
+            if (!item.IsHidden)
+            {
+                if (item.Permalink == "/gioi-thieu")
+                {
+                    <div class="col-md-2 col-sm-6">
+                        <div class="footer-span">Về IDJ </div>
+
+                        @if (item.Items.Any())
+                        {
+                            @foreach (var sub in item.Items)
+                            {
+                                <div>
+                                    <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <a title="" href="@item.Permalink" class="footer-span-content">@item.MenuTitle</a>
+                            </div>
+                        }
+
+                    </div>
+                }
+                if (item.Permalink == "/hoat-dong-dau-tu")
+                {
+                    <div class="col-md-2 col-sm-6">
+                        <div class="footer-span">Hoạt đồng đầu tư </div>
+
+                        @if (item.Items.Any())
+                        {
+                            @foreach (var sub in item.Items)
+                            {
+                                <div>
+                                    <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <a title="" href="@item.Permalink" class="footer-span-content">@item.MenuTitle</a>
+                            </div>
+                        }
+
+                    </div>
+                }
+                if (item.Permalink == "/quan-he-co-dong")
+                {
+                    <div class="col-md-2 col-sm-6">
+                        <div class="footer-span">Quan hệ cổ đông </div>
+
+                        @if (item.Items.Any())
+                        {
+                            @foreach (var sub in item.Items)
+                            {
+                                <div>
+                                    <a title="" href="@sub.Permalink" class="footer-span-content">@sub.MenuTitle</a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <a title="" href="@item.Permalink" class="footer-span-content">@item.MenuTitle</a>
+                            </div>
+                        }
+
+                    </div>
+                }
+
+            }
+            
+        }
+            <div class="col-md-3 col-sm-12">
+                    <div class="footer-span">Tin tức </div>
+                    <div class="row p-5-0">
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <img alt="" class="img-fluid" src="./images/news/news_1.png" />
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <a title="" href="chi-tiet.html" class="footer-span-content">Where does it come from?</a>
+                            <div class="news-date">MAY 7, 2019</div>
+                        </div>
+
+                    </div>
+                    <div class="row p-5-0">
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <img alt="" class="img-fluid" src="./images/news/news_1.png" />
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <a title="" href="chi-tiet.html" class="footer-span-content">Where does it come from?</a>
+                            <div class="news-date">MAY 7, 2019</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+                <div class="row copy-right">
+                    <div class="col-md-12">
+                        Copyright © 2019 IDJ Việt nam. All Rights Reserved
+                    </div>
+                </div>
+            </div>

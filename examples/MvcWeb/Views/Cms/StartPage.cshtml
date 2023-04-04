@@ -1,0 +1,203 @@
+﻿@using Piranha.Models
+@model MvcWeb.Models.TeaserPage
+@{
+    ViewBag.Title = Model.Title;
+    var HomeNews = (List<DynamicPost>) ViewBag.Posts;
+    var host = (string) ViewBag.Host;
+    var urlLang = (string) ViewBag.UrlLang;
+    var urlAboutUs = urlLang.Contains("/vi") ? urlLang + "/gioi-thieu" : urlLang + "/about-us";
+    var urlNews = urlLang.Contains("/vi") ? urlLang + "/tin-tuc" : urlLang + "/news";
+}
+
+<div id="home">
+    <div class="slides">
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (var x = 0; x < Model.SlideModel.Count; x++)
+                {
+                    <li data-target="#carouselExampleCaptions" data-slide-to="@x" class="@(x == 0 ? "active" : "") "></li>
+                }
+            </ol>
+            <div class="carousel-inner">
+                @for (var x = 0; x < Model.SlideModel.Count; x++)
+                {
+                    <div class="carousel-item @(x == 0 ? "active" : "")">
+                        <div class="img-container">
+                            <img alt="" class="img-fluid" src="@(Model.SlideModel[x].Image.Media?.PublicUrl.Substring(1) ?? "" )" class="d-block w-100" alt="...">
+                            <div class="img-title-left text-uppercase">
+                                @Html.Raw(Model.SlideModel[x].Body)
+                            </div>
+                            @if (!String.IsNullOrEmpty(Model.SlideModel[x].Link.Value))
+                            {
+                                <div class="img-button-left text-uppercase">
+                                    <a title="" href="@Model.SlideModel[x].Link.Value" class="button-gradient-blue text-white">
+                                        @Model.SlideModel[x].TitleLink <img alt="" src="/images/icons/arrow-right-white.png">
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <a title="" class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a title="" class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="who">
+        <div class="container">
+            <div class="row m-0">
+                <div class="col-lg-6 col-md-12 p-r-80">
+                    <h1 class="who-span-title font-size-14">@Model.Intro.HeaderTitle</h1>
+                    <h2>@Model.Intro.CompanyName</h2>
+                    <p class="font-size-24">@Model.Intro.Title</p>
+                    <p class="font-size-16 m-b-40">@Model.Intro.SubTitle</p>
+                    @if (!String.IsNullOrEmpty(Model.Intro.Link.Value))
+                    {
+                        <a title="" href="@Model.Intro.Link.Value" class="button-gradient-blue text-white">
+                            @Model.Intro.TitleLink <img alt="" src="/images/icons/arrow-right-white.png">
+                        </a>
+                    }
+                </div>
+                <div class="col-lg-6 col-md-12 who-img-height">
+                    <img alt="" class="img-fluid who-img" src="@Url.Content(Model.Intro.Image?.Media.PublicUrl ?? "" )"/>
+                    <img alt="" class="img-fluid who-img-bg" src="/images/who_cricle.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fields">
+        <div class="container">
+            <div class="row">
+                @{ var i = 1; }
+                @foreach (var item in Model.BusinessModel)
+                {
+                    var number = "0" + i;
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-lg-1 col-md-12">
+                                <h4 class="fields-span-title">@number </h4>
+                            </div>
+                            <div class="col-lg-2 col-md-12">
+                                <h4 class="fileds-border"></h4>
+                            </div>
+                            <div class="col-lg-9 col-md-12">
+                                <h3 class="font-weight-bold h-75 wow flipInX">@item.Title</h3>
+                                <p class="h-130">@item.SubTitle</p>
+                                @Html.Raw(item.Body)
+                            </div>
+                        </div>
+
+                    </div>
+                    i++;
+                }
+            </div>
+        </div>
+    </div>
+    <div class="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center text-white">
+
+                    <p class="font-color-D7D7D7">@Model.InvestActTitle.Title</p>
+                    <h2 class="wow fadeInDown">@Model.InvestActTitle.SubTitle</h2>
+                    <p class="font-size-16 font-color-D7D7D7 wow fadeInTop">@Model.InvestActTitle.Description</p>
+
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.InvestmentActivity)
+                {
+                    <div class="col-lg-4 col-md-6 m-b-30">
+                        <div class="img-container wow zoomInUp">
+                            <img alt="" class="img-fluid" src="@Url.Content(item.Image?.Media.PublicUrl ?? "" )">
+                            <div class="img-top-left font-size-30 font-weight-bold">@item.Title</div>
+                            <div class="img-bottom-left">
+                                <a title="" href="@item.Link.Value">
+                                    <img alt="" src="/images/icons/button-cricle.png">
+                                </a>
+                            </div>
+                            <div class="img-container-des">
+                                <img alt="" class="img-fluid" src="/images/projects/project-hover.png">
+                                <div class="img-top-left font-size-30 font-weight-bold">@item.Title</div>
+                                <div class="img-center-left">@item.SubTitle</div>
+                                <div class="img-bottom-left">
+                                    <a title="" href="@item.Link.Value">
+                                        <img alt="" src="/images/icons/button-cricle-hover.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="news">
+        <div class="container">
+            <div class="row p-15-0">
+                <div class="col-md-12">
+                    <h2 class="who-span-title float-left text-dark">@Model.News.Title</h2>
+                    <a title="" href="@urlNews" class="button float-right text-dark">
+                        @Model.News.TitleLink <img alt="" src="/images/icons/arrow-right-black.png">
+                    </a>
+                </div>
+            </div>
+            <div class="row p-15-0 autoplay">
+                @foreach (var item in HomeNews)
+                {
+                    var shareFb = "https://www.facebook.com/sharer/sharer.php?u=" + host + item.Permalink;
+                    var shareTw = "https://twitter.com/intent/tweet?text=" + host + item.Permalink;
+                    <div class="col-md-12 p-b-10">
+                        <div class="news-border wow pulse">
+                            <div class="img-container">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Regions.Hero.PrimaryImage.Media?.PublicUrl ?? "")"/>
+                                </a>
+                                <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                            </div>
+                            <div class="news-title">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <h4>
+                                        @if (item.Title?.Length > 35)
+                                        {
+                                            @(item.Title.Substring(0, 35) + "...")
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+                                    </h4>
+                                </a>
+                                <hr>
+                                <span class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</span>
+                                <h5 class="float-right share-social">
+                                    <div class="share-button">
+                                        <a href="@shareFb" target="_blank">
+                                            <i class='fab fa-facebook-f'></i>
+                                        </a>
+                                        <a href="@shareTw" target="_blank">
+                                            <i class='fab fa-twitter'></i>
+                                        </a>
+                                    </div>
+                                    <img alt="" class="img-fluid" src="/images/icons/ic_share_24px.png"/>
+                                </h5>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

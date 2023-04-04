@@ -1,0 +1,56 @@
+﻿<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a title="" class="navbar-brand" href="@WebApp.Site.Sitemap[0].Permalink">
+            <img src="~/images/logos/logo_idj.svg" alt="Idj Investment">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto menu">
+                @foreach (var item in WebApp.Site.Sitemap)
+                {
+                    if (!item.IsHidden)
+                    {
+                <li class="nav-item dropdown wow bounce">
+                    @if (item.Items.Any())
+                    {
+                        <a title="" class="nav-link dropdown-toggle" href="@item.Permalink" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @item.MenuTitle &nbsp; <img alt="" class="m-b-3" src="~/images/icons/arrow-down.png">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var sub in item.Items)
+                            {
+                                <a title="" class="dropdown-item" href="@sub.Permalink">@sub.MenuTitle</a>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        @if (String.Equals(item.MenuTitle, "Tuyển dụng"))
+                        {
+                            <a title="" class="nav-link dropdown-toggle" href="https://career.apecgroup.net/">@item.MenuTitle </a>
+                        }
+                        else
+                        {
+                            <a title="" class="nav-link dropdown-toggle" href="@item.Permalink">@item.MenuTitle </a>
+                        }
+                    }
+
+
+                </li>
+                    }
+                }
+                <li class="nav-item dropdown form-inline wow bounce">
+                    <a title="" class="nav-link dropdown-toggle" href="/vi">VI</a> |
+                    <a title="" class="nav-link dropdown-toggle" href="/en">EN</a>
+                </li>
+            </ul>
+            <form class="form-inline search-container">
+                <input class="search-input expandright" id="searchright" type="search" placeholder="Search">
+                <label class="button-input searchbutton" for="searchright"><i class="fa fa-search" aria-hidden="true"></i></label>
+            </form>
+        </div>
+    </nav>
+</div>

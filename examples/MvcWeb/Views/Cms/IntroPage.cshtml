@@ -1,0 +1,238 @@
+﻿@model MvcWeb.Models.IntroPage
+@{
+    ViewBag.Title = Model.Title;
+    string urlLang = (string) ViewBag.UrlLang;
+    string headerName = "CHÚNG TÔI LÀ AI?";
+    string titleName = "Công ty cổ phần Đầu tư IDJ Việt Nam";
+    string lblName2 = "Tên giao dịch";
+    string Name2 = "IDJ Investment";
+    string lblName3 = "Trụ sở chính";
+    string Name3 = "Tầng 3, Tòa nhà TTTM Grand Plaza, số 117 Trần Duy Hưng, P. Trung Hòa, Q. Cầu Giấy, TP. Hà Nội, Việt Nam.";
+    string lblName4 = "Ngày thành lập";
+    string Name4 = "15/03/2007";
+    string lblName5 = "Lĩnh vực đầu tư chính";
+    string Name5 = "Đầu tư BĐS, xử lý môi trường, văn phòng thương mại";
+    string lblName6 = "Mã cổ phiếu";
+    string Name6 = "IDJ, niêm yết tại Sàn Giao dịch Chứng khoán Hà Nội";
+    string lblName7 = "Vốn";
+    string Name7 = "1,470 tỷ đồng";
+    string lblName8 = "Tổng tài sản Công ty quản lý";
+    string Name8 = "3.456 tỷ đồng";
+
+    string headerName2 = "Lịch sử hình thành & phát triển";
+    string titleName2 = "IDJ Investment có tiền thân là Công ty cổ phần tài chính quốc tế và phát triển doanh nghiệp IDJ, ngày 19/06/2015 đổi tên thành Công ty cổ phần đầu tư IDJ Việt Nam. Từ khi thành lập, IDJ Investment đã từng bước khẳng định thương hiệu của mình với tư cách là một công ty đầu tư sáng tạo, hiệu quả và uy tín hàng đầu trên thị trường. Những dấu ấn quan trọng trong chặng đường của IDJ Investment gồm:";
+
+    string headerName3 = "Tầm nhìn";
+    string titleName3 = "IDJ Việt Nam mong muốn trở thành tập đoàn kinh tế đa ngành uy tín và chuyên nghiệp\r\nhàng đầu Việt Nam thông qua việc tạo lập và phát triển mô hình kinh doanh\r\nkhác biệt và đột phá trên thị trường, thể hiện rõ những triết lý kinh doanh mà IDJ đang theo đuổi:\r\nPhụng sự - Sáng tạo – Hạnh phúc.";
+
+    string headerName4 = "Sứ mệnh";
+    string titleName4 = "Đầu tư vào các cơ hội tăng trưởng, đa dạng.";
+    string titleName42 = "Cung cấp các sản phẩm và dịch vụ chuyên nghiệp, hoàn hảo.";
+    string titleName43 = "Phát triển nguồn nhân lực chuyên nghiệp thông qua việc xây dựng một môi trường làm việc năng động với cơ hội phát triển cho từng cá nhân.";
+
+    string headerName5 = "Giá trị cốt lõi";
+    string titleName5 = "IDJ Việt Nam xác định giá trị cốt lõi của công ty chính là:";
+
+    string headerName6 = "Sáng tạo";
+    string titleName6 = "Luôn đi đầu trong việc nắm bắt thị trường để tạo ra các cơ hội đầu tư đặc biệt";
+
+    string headerName7 = "Con người";
+    string titleName7 = "Môi trường làm việc năng động, mang tính khích lệ cao";
+
+    string headerName8 = "Cùng phát triển";
+    string titleName8 = "Kết hợp hài hòa lợi ích của các bên: Triết lý kinh doanh của IDJ Investment là đảm bảo lợi ích hài hòa cho các cổ đông, đối tác, nhân viên và xã hội";
+    if (urlLang.Contains("/en"))
+    {
+        headerName = "WHO ARE WE?";
+     titleName = "IDJ Investment Joint Stock Company";
+     lblName2 = "Transaction name";
+     Name2 = "IDJ Investment";
+     lblName3 = "Headquarters";
+     Name3 = "3rd Floor, Grand Plaza Shopping Center, No. 117 Tran Duy Hung, Trung Hoa Ward, Cau Giay Dist. Hanoi Vietnam.";
+     lblName4 = "Establishment";
+     Name4 = "15/03/2007";
+     lblName5 = "Investment sectors";
+     Name5 = "Real estate investment, environmental treatment, commercial office";
+     lblName6 = "Share code";
+     Name6 = "IDJ, stock exchange: HNX";
+     lblName7 = "Chartered capital";
+     Name7 = "VND 326 billions";
+     lblName8 = "Assets under management";
+     Name8 = "VND 1,000 billions";
+
+     headerName2 = "History of establishment and development";
+     titleName2 = "IDJ Investment was formerly known as IDJ International Finance and Enterprise Development Joint Stock Company and it was replace by “IDJ Vietnam Investment Joint Stock Company” in 19/06/2015. Over the last decade, IDJ Investment has gradually affirmed its brand not only as a leading creative but aslo as a reputable investment company in the market. In details, important milestones of IDJ Investment include:";
+
+     headerName3 = "Vision";
+     titleName3 = "Our vision is to become one of leading professional and prestige investment groups in Vietnam.";
+
+     headerName4 = "Mission";
+     titleName4 = "Investing in dynamic growth opportunities.";
+     titleName42 = "Providing professional and high quality products and services.";
+     titleName43 = "Developing a talented and dedicated team through our commitment to a dynamic and rewarding environment.";
+
+     headerName5 = "Core Values";
+     titleName5 = "Our Core Values are: ";
+
+     headerName6 = "Innovative";
+     titleName6 = "Always be on top of the market to";
+
+     headerName7 = "Human";
+     titleName7 = "Take advantage of new and special opportunities.";
+
+     headerName8 = "Develop together";
+     titleName8 = "We are inclusive to ensure mutual benefits for our shareholders, partners, employees and the communities.";
+    }
+}
+
+    <div id="intro">
+        <div class="banner">
+            <div class="img-container">
+                <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+                <div class="img-centered-title">@Model.Banner.Title </div>
+                @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+                {
+                    <div class="img-centered-hr">
+                        <img alt="" src="/images/hr.png">
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="about m-t-100 font-size-16">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <img alt=""  class="img-fluid" src="/images/abouts/about.jpg">
+                    </div>
+                    <div class="col-lg-6 col-md-12 m-t-50 p-l-60">
+                        <h1 class="who-span-title font-size-14 text-uppercase">@headerName</h1>
+                        <h2>
+                            @titleName
+                        </h2>
+                        <div class="row m-t-20">
+                            <div class="col-md-4 col-4">@lblName2</div>
+                            <div class="col-md-8 col-8">@Name2</div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName3</div>
+                            <div class="col-md-8 col-8">
+                                @Name3
+                            </div>
+                        </div>
+                        @* <div class="row m-t-10"> *@
+                        @*     <div class="col-md-4 col-4">Văn phòng đại diện</div> *@
+                        @*     <div class="col-md-8 col-8"> *@
+                        @*         Lầu 1, Tòa nhà Mỹ Vinh, 250 Nguyễn Thị *@
+                        @*         Minh Khai, Phường 6, Quận 3 T.p Hồ Chí Minh *@
+                        @*     </div> *@
+                        @* </div> *@
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName4</div>
+                            <div class="col-md-8 col-8">@Name4</div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName5</div>
+                            <div class="col-md-8 col-8">
+                                @Name5
+                            </div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName6</div>
+                            <div class="col-md-8 col-8">@Name6</div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName7</div>
+                            <div class="col-md-8 col-8">@Name7</div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-4 col-4">@lblName8</div>
+                            <div class="col-md-8 col-8">@Name8</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history m-t-40 text-center text-white">
+            <div class="container">
+                <div class="row p-b-30 p-t-40">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h2>@headerName2</h2>
+                        <p class="font-size-16 p-l-40 p-r-40">
+                            @titleName2
+                        </p>
+                        <img alt=""  class="img-fluid" src="/images/abouts/Timeline.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vision p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 m-b-40">
+                        <h2 class="font-size-42 text-dark">@headerName3</h2>
+                        <p class="font-size-16 font-color-232323">
+                            @titleName3
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 m-t-40">
+                        <h2 class="font-size-42 text-dark">@headerName4</h2>
+                        <p class="font-size-16 font-color-232323">
+                            <img alt="" class="img-fluid m-r-10" src="/images/abouts/path.png">   @titleName4
+                        </p>
+                        <p class="font-size-16 font-color-232323">
+                            <img alt="" class="img-fluid  m-r-10" src="/images/abouts/path.png">  @titleName42
+                        </p>
+                        <p class="font-size-16 font-color-232323">
+                            <img alt="" class="img-fluid  m-r-10" src="/images/abouts/path.png">  @titleName43
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history p-b-40 text-center text-white">
+            <div class="container">
+                <div class="row p-b-30 p-t-40">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h2 class="font-size-42">@headerName5</h2>
+                        <p class="font-size-16 p-l-40 p-r-40">
+                            @titleName5
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt=""  class="img-fluid" src="/images/abouts/about-brain.png">
+                        <p class="font-size-30 m-t-42">@headerName6</p>
+                        <img alt=""  class="img-fluid m-b-40" src="/images/abouts/hr.png">
+                        <p> @titleName6</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img alt=""  class="img-fluid" src="/images/abouts/about-hand.png">
+                        <p class="font-size-30 m-t-30">@headerName7</p>
+                        <img alt=""  class="img-fluid m-b-40" src="/images/abouts/hr.png">
+                        <p>
+                           @titleName7
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img alt=""  class="img-fluid m-t-30" src="/images/abouts/about-cooperation.png">
+                        <p class="font-size-30 m-t-74">@headerName8</p>
+                        <img alt=""  class="img-fluid m-b-40" src="/images/abouts/hr.png">
+                        <p> @titleName8</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map m-t-30 m-b-30">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.617925354719!2d105.79510931403271!3d21.007947386009704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aca6ed88fd79%3A0x5c03a84593ee03ba!2zMTE3IFRy4bqnbiBEdXkgSMawbmcsIFRydW5nIEhvw6AsIEPhuqd1IEdp4bqleSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1583231656797!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </div>

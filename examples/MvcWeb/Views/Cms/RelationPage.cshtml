@@ -1,0 +1,373 @@
+﻿@model MvcWeb.Models.RelationPage
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div id="relation">
+
+<div class="banner">
+    <div class="img-container">
+        <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "")">
+        <div class="img-centered-title">@Model.Banner.Title </div>
+        @if (!string.IsNullOrEmpty(Model.Banner.Title.Value))
+        {
+            <div class="img-centered-hr">
+                <img alt="" src="/images/hr.png">
+            </div>
+        }
+    </div>
+</div>
+
+<div id="relation-menu" class="text-white text-center">
+    <ul>
+        <li class="relation-item active">
+            <a href="#manager-enterprise">@ViewBag.ManagerEnterprise</a>
+        </li>
+        <li class="relation-item">
+            <a href="#noti">@ViewBag.Notification</a>
+        </li>
+        <li class="relation-item">
+            <a href="#report-fin">@ViewBag.FinalcialReport</a>
+        </li>
+        <li class="relation-item">
+            <a href="#report-year">@ViewBag.YearlyReport</a>
+        </li>
+        <li class="relation-item">
+            <a href="#info">@ViewBag.News</a>
+        </li>
+        <li class="relation-item">
+            <a href="#resolutions">@ViewBag.Resolutions</a>
+        </li>
+    </ul>
+</div>
+
+<div class="relation-content">
+@Html.HiddenFor(x => x.Id)
+<div id="manager-enterprise">
+    <div class="container-full">
+        <div class="color-white p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>@Model.Model.Title</h1>
+                        <p class="font-size-16">
+                            @Model.Model.SubTitle
+                        </p>
+                        <img class="img-relations img-fluid" src="@(Model.Model.Image.Media?.PublicUrl.Substring(1) ?? "")">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="color-F8F8F8 p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        @if (Model.Regulations != null)
+                        {
+                            <h1 class="font-size-30 font-weight-bold">@Model.TitleRegulation.Title</h1>
+                            <p>
+                                @Model.TitleRegulation.SubTitle
+                            </p>
+                            <div class="table-responsive"><table id="tbl-regu" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Tên tài liệu</th>
+                                    <th class="text-center">Thời gian đăng</th>
+                                    <th class="text-center">Tải về</th>
+                                    <th>Năm</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model.Regulations.OrderByDescending(x=>x.Date.Value).ToList())
+                                {
+                                    var url = item.File.Media.PublicUrl.Substring(1);
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">
+                                            <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                        </td>
+                                        <td>@item.Date.Value?.ToString("yyyy")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="color-white p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        @if (Model.Managers != null)
+                        {
+                            <h1 class="font-size-30 font-weight-bold">@Model.TitleManager.Title</h1>
+                            <p>
+                                @Model.TitleManager.SubTitle
+                            </p>
+                            <div class="table-responsive"><table id="tbl-manager" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Tên tài liệu</th>
+                                    <th class="text-center">Thời gian đăng</th>
+                                    <th class="text-center">Tải về</th>
+                                    <th>Năm</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model.Managers.OrderByDescending(x=>x.Date.Value).ToList())
+                                {
+                                    var url = item.File.Media.PublicUrl.Substring(1);
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">
+                                            <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                        </td>
+                                        <td>@item.Date.Value?.ToString("yyyy")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="color-F8F8F8 p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="font-size-30 font-weight-bold">@Model.TitleReport.Title</h1>
+                        <p>
+                            @Model.TitleReport.SubTitle
+                        </p>
+                        @if (Model.Reports != null)
+                        {
+                            <div class="table-responsive"><table id="tbl-report" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Tên tài liệu</th>
+                                    <th class="text-center">Thời gian đăng</th>
+                                    <th class="text-center">Tải về</th>
+                                    <th>Năm</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model.Reports.OrderByDescending(x=>x.Date.Value).ToList())
+                                {
+                                    var url = item.File.Media.PublicUrl.Substring(1);
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">
+                                            <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                        </td>
+                                        <td>@item.Date.Value?.ToString("yyyy")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="noti" class="notification p-t-40 p-b-40">
+    <div class="container">
+        <div class="row wow slideInLeft">
+            <div class="col-md-12 ">
+                <h2 class="font-size-30 font-weight-bold wow slideInUp">@ViewBag.Notification</h2>
+                @if (Model.Info != null)
+                {
+                    <div class="table-responsive"><table id="tbl-noti" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên tài liệu</th>
+                            <th class="text-center">Thời gian đăng</th>
+                            <th class="text-center">Tải về</th>
+                            <th>Năm</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.Info.OrderByDescending(x=>x.Date.Value).ToList())
+                        {
+                            var url = item.File.Media.PublicUrl.Substring(1);
+                            <tr>
+                                <td>@item.Title</td>
+                                <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                </td>
+                                <td>@item.Date.Value?.ToString("yyyy")</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="report-fin" class="final-report p-t-40 p-b-40 color-F8F8F8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h2 class="font-size-30 font-weight-bold wow slideInUp">@ViewBag.FinalcialReport</h2>
+                @if (Model.ReportFin != null)
+                {
+                    <div class="table-responsive"><table id="tbl-report-fin" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên tài liệu</th>
+                            <th class="text-center">Thời gian đăng</th>
+                            <th class="text-center">Tải về</th>
+                            <th>Năm</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.ReportFin.OrderByDescending(x=>x.Date.Value).ToList())
+                        {
+                            var url = item.File.Media.PublicUrl.Substring(1);
+                            <tr>
+                                <td>@item.Title</td>
+                                <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                </td>
+                                <td>@item.Date.Value?.ToString("yyyy")</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="report-year" class="year-report p-t-40 p-b-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h2 class="font-size-30 font-weight-bold wow slideInUp">@ViewBag.YearlyReport</h2>
+                @if (Model.ReportYear != null)
+                {
+                    <div class="table-responsive"><table id="tbl-report-year" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên tài liệu</th>
+                            <th class="text-center">Thời gian đăng</th>
+                            <th class="text-center">Tải về</th>
+                            <th>Năm</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.ReportYear.OrderByDescending(x=>x.Date.Value).ToList())
+                        {
+                            var url = item.File.Media.PublicUrl.Substring(1);
+                            <tr>
+                                <td>@item.Title</td>
+                                <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                </td>
+                                <td>@item.Date.Value?.ToString("yyyy")</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info" class="final-report p-t-40 p-b-40 color-F8F8F8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h2 class="font-size-30 font-weight-bold wow slideInUp">@ViewBag.News</h2>
+                @if (Model.Noti != null)
+                {
+                    <div class="table-responsive"><table id="tbl-info" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên tài liệu</th>
+                            <th class="text-center">Thời gian đăng</th>
+                            <th class="text-center">Tải về</th>
+                            <th>Năm</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.Noti.OrderByDescending(x=>x.Date.Value).ToList())
+                        {
+                            var url = item.File.Media.PublicUrl.Substring(1);
+                            <tr>
+                                <td>@item.Title</td>
+                                <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                </td>
+                                <td>@item.Date.Value?.ToString("yyyy")</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="resolutions" class="final-report p-t-40 p-b-40 color-F8F8F8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h2 class="font-size-30 font-weight-bold wow slideInUp">@Model.TitleResolution.Title</h2>
+                @if (Model.Resolution != null)
+                {
+                    <div class="table-responsive">
+                        <table id="tbl-resolution" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên tài liệu</th>
+                                    <th class="text-center">Thời gian đăng</th>
+                                    <th class="text-center">Tải về</th>
+                                    <th>Năm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Resolution.OrderByDescending(x => x.Date.Value).ToList())
+                                {
+                                    var url = item.File.Media.PublicUrl.Substring(1);
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td class="text-center">@item.Date.Value?.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">
+                                            <a href="@url" title="@item.Title.Value" target="_blank">@(url.Contains(".pdf") ? Html.Raw("<i class='far fa-file-pdf'></i>") : Html.Raw("<i class='fas fa-download'></i>"))</a>
+                                        </td>
+                                        <td>@item.Date.Value?.ToString("yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+
+@section script{
+    <script src="/assets/js/relations.js"></script>
+}

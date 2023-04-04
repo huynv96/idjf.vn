@@ -1,0 +1,56 @@
+﻿@using Microsoft.EntityFrameworkCore.Query
+@model MvcWeb.Models.LeaderPage
+@{
+    ViewBag.Title = Model.Title;
+}
+
+    <div id="recruit">
+
+        <div class="banner">
+            <div class="img-container">
+                <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+                <div class="img-centered-title">@Model.Banner.Title </div>
+                @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+                {
+                    <div class="img-centered-hr">
+                        <img alt="" src="/images/hr.png">
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="ready text-center m-t-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h1 class="who-span-title text-uppercase font-size-14">@Model.Intro.HeaderName</h1>
+                        <h2>@Model.Intro.Title</h2>
+                        <p class="font-size-16">
+                           @Model.Intro.SubTitle
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info text-center m-t-40">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.Leader)
+                    {
+                    <div class="col-md-4 m-b-20">
+                        <div class="news-border">
+                            <div class="img-container">
+                                <img alt="" class="img-fluid" src="@Url.Content(item.Image.Media.PublicUrl)" />
+                            </div>
+
+                            <div class="news-title">
+                                <p class="font-size-24 font-weight-bold">@item.Title</p>
+                                <p class="font-size-14 text-uppercase">@item.SubTitle</p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,50 @@
+﻿@using Microsoft.EntityFrameworkCore.Query
+@using MvcWeb.Models
+@using Piranha.Models
+@model MvcWeb.Models.SearchPage
+@{
+    ViewBag.Title = "Tìm kiếm";
+    var homeNews = (List<BlogPost>)ViewBag.Posts;
+}
+
+<div id="news">
+
+    <div class="banner">
+        <div class="img-container">
+            <img class="img-fluid" src="~/images/news/Main-Banner-1.png">
+            <h1 class="img-centered-title">Tin tức </h1>
+            <div class="img-centered-hr"> <img src="./images/hr.png"></div>
+        </div>
+
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in homeNews)
+                {
+                    <div class="col-md-4 m-b-30">
+                        <div class="news-border">
+                            <a title="" href="@item.Permalink">
+                                <div class="img-container">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Hero.PrimaryImage.Media.PublicUrl)" />
+                                    <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                                </div>
+                                <div class="news-title">
+                                    <h3>@item.Title</h3>
+                                    <hr>
+                                    <span class="news-date">@item.Published.Value.ToString("yyyy-MM-dd")</span>
+                                    <h5 class="float-right">
+                                        <button class="as-text" type="button" data-toggle="tooltip" data-html="true" title="<i class='fab fa-facebook-f'></i> <i class='fab fa-google-plus-g'></i> <i class='fab fa-twitter'></i> <i class='fab fa-instagram'></i>">
+                                            <img alt="" class="img-fluid" src="~/images/icons/ic_share_24px.png" />
+                                        </button>
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

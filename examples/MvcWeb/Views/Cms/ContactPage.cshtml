@@ -1,0 +1,140 @@
+﻿@using Microsoft.EntityFrameworkCore.Query
+@model MvcWeb.Models.ContactPage
+@{
+    ViewBag.Title = Model.Title;
+    string urlLang = (string) ViewBag.UrlLang;
+    string headerName = "LIÊN HỆ CỦA CHÚNG TÔI";
+    string subTitle = "CÔNG TY CỔ PHẦN ĐẦU TƯ IDJ VIỆT NAM";
+    string titleName = "Chúng tôi luôn sẵn sàng kết nối cùng bạn";
+
+    string title = "Trụ sở chính";
+    string name = "Tầng 3, tòa nhà TTTM Grand Plaza, số 117 Trần Duy Hưng, P. Trung Hòa, Q. Cầu Giấy, TP Hà Nội";
+
+    string headerName2 = "LIÊN LẠC";
+    string titleName2 = "Liên hệ trực tiếp với chúng tôi";
+    string subTitle2 = "Nếu bạn cần thêm thông tin, vui lòng gửi email cho chúng tôi bằng cách điền thông tin theo mẫu bên dưới. Xin cám ơn.";
+
+    string apply = "Gửi thông tin";
+    if (urlLang.Contains("/en"))
+    {
+        headerName = "OUR CONTACT";
+         subTitle = "IDJ VIETNAM INVESTMENT JOINT STOCK COMPANY";
+         titleName = "We are always willing to connect with you";
+
+         title = "Headquarters";
+         name = "3rd Floor, Grand Plaza Shopping Center, No. 117 Tran Duy Hung, Trung Hoa Ward, Cau Giay Dist. Hanoi Vietnam";
+
+         headerName2 = "GET IN TOUCH";
+         titleName2 = "Contact us directly";
+         subTitle2 = "If you need more information, please email us by filling the form below. Thank you!";
+
+         apply = "Send Info";
+    }
+}
+    <div id="contact">
+        <div class="banner">
+            <div class="img-container">
+                <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+                <div class="img-centered-title">@Model.Banner.Title </div>
+                @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+                {
+                    <div class="img-centered-hr">
+                        <img alt="" src="/images/hr.png">
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="ready text-center m-t-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h1 class="who-span-title font-size-14">@headerName</h1>
+                        <h2>
+                            @Model.Contact.Title
+                        </h2>
+                        <p class="font-size-16">
+                            @Model.Contact.SubTitle
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info text-center m-t-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 m-b-20">
+                        <div class="news-border">
+                            <div class="img-container  p-t-20">
+                                <img alt="" class="img-fluid" src="/images/contacts/Location.png" />
+                            </div>
+
+                            <div class="news-title">
+                                <h5>@title</h5>
+                                <div>@Model.Contact.Address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4  m-b-20 ">
+                        <div class="news-border">
+                            <div class="img-container p-t-20">
+                                <img alt="" class="img-fluid" src="/images/contacts/Phone.png" />
+                            </div>
+
+                            <div class="news-title">
+                                <h5>Hotline 24 / 7</h5>
+                                <div>@Model.Contact.Mobile</div>
+                                <div><span>&nbsp; </span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4  m-b-20">
+                        <div class="news-border">
+                            <div class="img-container p-t-20">
+                                <img alt="" class="img-fluid" src="/images/contacts/Mail.png" />
+                            </div>
+
+                            <div class="news-title">
+                                <h5>Email</h5>
+                                <div>@Model.Contact.Email</div>
+                                <div><span>&nbsp; </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact m-t-100">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-6 m-b-20">
+                        <div class="contact-title text-uppercase m-b-40">@headerName2</div>
+                        <h3>@titleName2</h3>
+                        <div class="m-t-40"> @subTitle2</div>
+                        <div class="form-group m-t-40">
+                            <input id="contact-name" type="text" class="form-control input-bg" placeholder="Họ tên / Name *" />
+                        </div>
+                        <div class="form-group">
+                            <input id="contact-email" type="text" class="form-control input-bg" placeholder="Email *" />
+                        </div>
+                        <div class="form-group">
+                            <input id="contact-title" type="text" class="form-control input-bg" placeholder="Tiêu đề / Title *" />
+                        </div>
+                        <div class="form-group m-b-40">
+                            <textarea id="contact-content" type="text" class="form-control input-bg" placeholder="Nội dung / Content"></textarea>
+                        </div>
+                        <a href="#" id="add-contact" title="" class="button-gradient-blue text-white m-b-30">@apply <img alt="" src="/images/icons/arrow-right-white.png"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <img alt="" class=" img-fluid" src=" /images/contacts/integrio_contacts_layers_1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map m-t-30 m-b-30">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.617925354719!2d105.79510931403271!3d21.007947386009704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aca6ed88fd79%3A0x5c03a84593ee03ba!2zMTE3IFRy4bqnbiBEdXkgSMawbmcsIFRydW5nIEhvw6AsIEPhuqd1IEdp4bqleSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1583231656797!5m2!1svi!2s&hl=en" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+        </div>
+    </div>

@@ -1,0 +1,122 @@
+﻿@using Microsoft.EntityFrameworkCore.Query
+@model MvcWeb.Models.RecruiPage
+@{
+    ViewBag.Title = Model.Title;
+    string urlLang = (string) ViewBag.UrlLang;
+    var host = (string) ViewBag.Host;
+    string headerName = "Sức mạnh trong bạn";
+    string titleName = "Gia nhập mạng lưới nhân tài của chúng tôi";
+    string apply = "Ứng tuyển";
+    if (urlLang.Contains("/en"))
+    {
+        headerName = "THE POWER WITHIN YOU";
+        titleName = "Join our talent network";
+        apply = "Apply Now";
+    }
+}
+@section head{
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            height: 55px;
+        }
+    </style>
+}
+<div id="recruit">
+
+    <div class="banner">
+        <div class="img-container">
+            <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+            <div class="img-centered-title">@Model.Banner.Title </div>
+            @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+            {
+                <div class="img-centered-hr">
+                    <img alt="" src="/images/hr.png">
+                </div>
+            }
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Archive.Posts)
+                {
+                    var shareFb = "https://www.facebook.com/sharer/sharer.php?u=" + host + @item.Permalink;
+                    var shareTw = "https://twitter.com/intent/tweet?text=" + host + @item.Permalink;
+                    <div class="col-lg-4 col-md-6 m-b-30">
+                        <div class="news-border wow zoomIn">
+                            <div class="img-container">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Regions.Hero.PrimaryImage.Media?.PublicUrl ?? "")" />
+                                </a>
+                                <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                            </div>
+                            <div class="news-title">
+                                <a title="@item.Title" href="@item.Permalink">
+                                    <h2>
+                                        @if (item.Title.Length > 40)
+                                        {
+                                            @(item.Title.Substring(0, 35) + "...")
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+                                    </h2>
+                                </a>
+                                <hr>
+                                <span class="news-date">@item.Published.Value.ToString("dd-MM-yyyy")</span>
+                                <h5 class="float-right share-social">
+                                    <div class="share-button">
+                                        <a href="@shareFb" target="_blank"> <i class='fab fa-facebook-f'></i> </a>
+                                        <a href="@shareTw" target="_blank"> <i class='fab fa-twitter'></i> </a>
+                                    </div>
+                                    <img alt="" class="img-fluid" src="/images/icons/ic_share_24px.png" />
+                                </h5>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="contact m-t-40">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6 m-b-10">
+                    <div class="contact-title text-uppercase m-b-10">@headerName</div>
+                    <h2 class="font-weight-bold">@titleName</h2>
+                    <div class="form-group m-t-40">
+                        <input type="text" id="apply-name" class="form-control input-bg" placeholder="Họ tên / Name *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="apply-email" class="form-control input-bg" placeholder="Email *" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="apply-mobile" class="form-control input-bg" placeholder="Số điện thoại / Mobile *" />
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("apply-job", new SelectList(ViewBag.ListPosts, "Value", "Text"), new { @class = "form-control input-bg" })
+                    </div>
+                    <div class="form-group custom-file">
+                        <input type="file" class="" id="customFile">
+                        <label class="custom-file-label text-left input-bg" id="customInputFile" for="customFile">CV / Porfolio </label>
+
+                    </div>
+                    <div class="apply-des text-left">Hỗ trợ định dạng *.doc, *.docx, *.pdf và không quá 2MB</div>
+                    <div class="form-group m-t-10 m-b-40">
+                        <textarea type="text" id="apply-intro" class="form-control input-bg" placeholder="Tự giới thiệu bản thân / Introduce your self"></textarea>
+
+                    </div>
+                    <a href="#" id="apply-cv" class="button-gradient-blue text-uppercase text-white m-b-30">@apply<img alt="" src="/images/icons/arrow-right-white.png"></a>
+                </div>
+                <div class="col-md-6">
+                    <img class=" img-fluid" src=" /images/recruits/recruit-hr.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

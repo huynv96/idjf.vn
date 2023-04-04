@@ -1,0 +1,115 @@
+﻿@model MvcWeb.Models.InvestPage
+@{
+    ViewBag.Title = Model.Title;
+}
+    <div id="invest">
+        <section class="banner">
+            <div class="img-container">
+                <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+                <div class="img-centered-title">@Model.Banner.Title </div>
+                @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+                {
+                    <div class="img-centered-hr">
+                        <img alt="" src="/images/hr.png">
+                    </div>
+                }
+            </div>
+        </section>
+        <div class="invest m-t-100">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <h1 class="who-span-title text-uppercase font-size-14">@Model.Intro.HeaderName</h1>
+                        <h2 class="text-uppercase wow fadeInDown">@Model.Intro.Title</h2>
+                        <p class="font-size-16 wow fadeInTop">@Model.Intro.SubTitle</p>
+                    </div>
+                </div>
+                @for (var i = 0; i < Model.Invest.Count; i++)
+                {
+                    @if (i % 2 == 0)
+                    {
+                        <div class="row m-t-30">
+                            <div class="col-lg-6 col-md-12 wow fadeInLeft">
+                                <img alt=""  class="img-fluid h-380" src="@Url.Content(Model.Invest[i].Image.Media?.PublicUrl ?? "")">
+                            </div>
+                            <div class="col-lg-6 col-md-12 wow fadeInRight">
+                                <div class="invest-title">@Model.Invest[i].Title</div>
+                                <img alt=""  class="img-fluid" src="/images/invests/hr.png">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Finish</div>
+                                        <div class="invest-finished">@Model.Invest[i].Finished</div>
+                                    </div>
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Location</div>
+                                        <div class="invest-finished">@Model.Invest[i].Address</div>
+                                    </div>
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Progress</div>
+                                        <div class="invest-finished">@Model.Invest[i].Shedule</div>
+                                    </div>
+                                </div>
+                                <img alt=""  class="img-fluid" src="/images/invests/hr.png">
+                                <div class="font-size-16 m-b-40" title="@Model.Invest[i].Description.Value">
+                                    @if (Model.Invest[i].Description.Value.Length > 450)
+                                    {
+                                        @(Model.Invest[i].Description.Value.Substring(0, 450) + "...");
+                                    }
+                                    else
+                                    {
+                                        @Model.Invest[i].Description;
+                                    }
+                                </div>
+                                <div>
+                                    <a href="@Model.Invest[i].Link.Value" class="button-gradient-blue text-white">@ViewBag.More <img alt="" src="/images/icons/arrow-right-white.png"></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row p-t-30">
+                            <div class="col-lg-6 col-md-12 m-b-40 wow fadeInLeft">
+                                <div class="invest-title">@Model.Invest[i].Title</div>
+                                <img alt=""  class="img-fluid" src="/images/invests/hr.png">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Finish</div>
+                                        <div class="invest-finished">@Model.Invest[i].Finished</div>
+                                    </div>
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Location</div>
+                                        <div class="invest-finished">@Model.Invest[i].Address</div>
+                                    </div>
+                                    <div class="col-md-4 col-4">
+                                        <div class="font-size-20">@ViewBag.Progress</div>
+                                        <div class="invest-finished">@Model.Invest[i].Shedule</div>
+                                    </div>
+                                </div>
+                                <img alt=""  class="img-fluid" src="/images/invests/hr.png">
+                                <div class="font-size-16 m-b-40" title="@Model.Invest[i].Description.Value">
+                                    @if (Model.Invest[i].Description.Value.Length > 450)
+                                    {
+                                        @(Model.Invest[i].Description.Value.Substring(0, 450) + "...");
+                                    }
+                                    else
+                                    {
+                                        @Model.Invest[i].Description;
+                                    }
+                                </div>
+                                <div>
+                                    <a href="@Model.Invest[i].Link.Value" class="button-gradient-blue text-white">@ViewBag.More <img alt="" src="/images/icons/arrow-right-white.png"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 wow fadeInRight">
+                                <img alt=""  class="img-fluid h-380" src="@Url.Content(Model.Invest[i].Image.Media?.PublicUrl ?? "")">
+                            </div>
+
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,607 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apec Diamond Park Lạng Sơn</title>
+
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+    <meta name="keywords" content="Apec Diamond Park Lạng Sơn">
+    <meta name="description" content="Apec Diamond Park Lạng Sơn">
+    <meta property="og:url" content="http://www.idjf.vn/apecdiamondpark">
+    <meta property="og:image" content="http://idjf.vn/uploads/c43236ad-069b-4515-bd8f-72e59e9d1a8d-tai%20sao%20hop%20tac%20-%20D.A%20Lang%20Son.jpg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Apec Diamond Park Lạng Sơn">
+    <meta property="og:description" content="Apec Diamond Park Lạng Sơn">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="/assetsApecDiamonPark/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assetsApecDiamonPark/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="/assetsApecDiamonPark/css/animate.min.css" rel="stylesheet" />
+    <link href="/assetsApecDiamonPark/css/slick.css" rel="stylesheet" />
+    <link href="/assetsApecDiamonPark/css/style.css" rel="stylesheet" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141923495-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-141923495-1');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })
+            (window, document, 'script', 'dataLayer', 'GTM-58CMPZR');
+    </script>
+    <!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="main_menu fw">
+                    <div class="col-xs-2 menu-toggle">
+                        <button type="button" class="menu-btn">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="logo col-xs-8 col-md-2">
+                        <a href="#">
+                            <img src="/assetsApecDiamonPark/images/logo1.png" class="img-responsive logo1">
+                            <img src="/assetsApecDiamonPark/images/logo2.png" class="img-responsive logo2" style="display: none;">
+                        </a>
+                    </div>
+
+                    <div class="menu col-md-10">
+                        <ul class="fw menu_mobile">
+                            <li class="active"><a data-id="1"><i class="fa fa-home"></i>Trang chủ</a></li>
+                            <li><a data-id="2"><i class="fa fa-globe"></i>Tổng quan</a></li>
+                            <li><a data-id="3"><i class="fa fa-map-marker"></i>Vị trí</a></li>
+                            <li><a data-id="4"><i class="fa fa-cart-plus"></i>Sản phẩm</a></li>
+                            <li><a data-id="5"><i class="fa fa-building-o"></i>Kiến trúc</a></li>
+                            <li><a data-id="6"><i class="fa fa-navicon"></i>Tiện ích</a></li>
+                            <li><a data-id="7"><i class="fa fa-image"></i>Hình ảnh</a></li>
+                            <li><a data-id="8"><i class="fa fa-newspaper-o"></i>Tin tức</a></li>
+                            <li><a data-id="9"><i class="fa fa-envelope-o"></i>Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="hotline">
+            <i class="fa fa-phone"></i>
+            <label>Hotline</label>
+            <span>0911.811.833</span>
+        </div>
+        <div class="edit"><i class="fa fa-pencil-square-o"></i></div>
+        <div class="register">
+            <i class="fa fa-pencil-square-o"></i>
+            <label>Đăng ký</label>
+            <span>nhận thông tin</span>
+            <form action="" method="POST" role="form" style="padding: 10px 0 0;">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Họ tên">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" placeholder="Điện thoại">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" cols="1" id="content" placeholder="Nội dung"></textarea>
+                </div>
+                <button type="button" class="btn btn-success" id="btnSubmit" onclick="">Gửi đi</button>
+                <button type="button" class="close">&times;</button>
+                <p id="message"></p>
+            </form>
+        </div>
+
+        <div id="fullpage">
+
+            <section id="slide" class="section ">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+                    <div class="carousel-inner slide_images">
+                        <div class="item active">
+                            <a href="#" class="slide_mobile"><img src="/assetsApecDiamonPark/images/bg_slide4.jpg" class="img-responsive img_mobile"></a>
+                            <a style="background: url(/assetsApecDiamonPark/images/bg_slide4.jpg) no-repeat;" class="img_desktop slide_desktop"></a>
+                            <div class="slide_slogan">
+                                <h1>Kiến tạo cuộc sống phồn vinh xứ Lạng</h1>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <a href="#" class="slide_mobile"><img src="/assetsApecDiamonPark/images/bg_slide5.jpg" class="img-responsive img_mobile"></a>
+                            <a style="background: url(/assetsApecDiamonPark/images/bg_slide5.jpg) no-repeat;" class="img_desktop slide_desktop"></a>
+                            <div class="slide_slogan">
+                                <h1>Tổ hợp căn hộ thương mại dịch vụ 5 sao quốc tế</h1>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <a href="#" class="slide_mobile"><img src="/assetsApecDiamonPark/images/bg_slide6.jpg" class="img-responsive img_mobile"></a>
+                            <a style="background: url(/assetsApecDiamonPark/images/bg_slide6.jpg) no-repeat;" class="img_desktop slide_desktop"></a>
+                            <div class="slide_slogan">
+                                <h1>Tiên phong tạo điểm đến cho giới tinh hoa Lạng Sơn</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#myCarousel" data-slide="prev">
+                        <span class="fa fa-angle-left fa-3x"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a href="#myCarousel" data-slide="next">
+                        <span class="fa fa-angle-right fa-3x"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="overview" class="section ">
+                <div class="container">
+                    <div class="col-md-5 wow zoomIn">
+                        <img src="/assetsApecDiamonPark/images/tongquan3.jpg" class="img-responsive">
+                    </div>
+                    <div class="col-md-7 overview_info">
+                        <div class="row wow slideInRight" style="margin:0;">
+                            <h2 class="title">Kế cận "Đại đô thị" 310HA của lạng sơn</h2>
+                            <p>
+                                Hướng đến mục tiêu xây dựng thành phố Lạng sơn trở thành đô thị loại II và theo yêu cầu các cấp
+                                chính quyền tỉnh Lạng Sơn cũng đã phê duyệt chủ trương cho nhà đầu tư vào nghiên cứu và lập
+                                kế hoạch chi tiết dự án tỷ lệ 1/500 với tổng diện tích 310ha. Được biết, dự án này sẽ được
+                                quy hoạch để trở thành khu đô thị nghỉ dưỡng sinh thái với biệt thự đồi, biệt thự bên hồ,
+                                nhà phố, tòa nhà hỗn hợp,... khu dịch vụ bao gồm: sân golf, bóng đá, tennis, khu thể thao
+                                ngoài trời, spa, gym, tắm khoáng... và đặc biệt dự án chỉ cách Apec Diamond Park hơn 300m.
+                                Như vậy trong tương lai Apec Diamond Park sẽ được hưởng lợi trực tiếp từ không gian và hệ
+                                thống tiện ích, dịch vụ từ "siêu" dự án này.
+                            </p>
+                        </div>
+                        <div class="row wow slideInRight" style="margin:0;">
+                            <h2 class="title">Tổng quan dự án</h2>
+                            <ul>
+                                <li>
+                                    <p>Tên dự án: Apec Diamond Park</p>
+                                </li>
+                                <li>
+                                    <p>Vị trí: Quốc lộ 1A, thuộc thôn Phai Duốc, xã Mai Pha, thành phố Lạng Sơn.</p>
+                                </li>
+                                <li>
+                                    <p>Diện tích lô đất: 55.432 m2</p>
+                                </li>
+                                <li>
+                                    <p>Loại hình: Shophouse, căn hộ khách sạn, trung tâm thương mại.</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Tiện ích dự án: Khu shophouse, trung tâm thương mại Apec Center, trung tâm hội nghị quốc
+                                        tế, nhà hàng Á - Âu, bể bơi vô cực, skybar, hệ thống gym, spa, Jimjibang,...
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Đơn vị phát triển dự án: Apec Group</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="place" class="section ">
+                <div class="container">
+                    <div class="col-md-8 wow zoomIn">
+                        <img src="/assetsApecDiamonPark/images/place.jpg" class="img-responsive">
+                    </div>
+                    <div class="col-md-4 place_info wow slideInRight">
+                        <div class="row">
+                            <h2 class="title">"Địa lợi" sinh phú quý</h2>
+                            <p>
+                                Nằm tại vị trí chiến lược của thành phố lạng sơn, Apec Diamond Park vừa được hưởng lợi thế luồng
+                                giao thông nhộn nhịp đông dúc, vừa mang lại cuộc sống đẳng cấp và giúp gia chủ dễ dàng di
+                                chuyển đến các điểm trọng yếu trong và ngoài thành phố:
+                            </p>
+                            <p>- Cách ga Lạng Sơn 1.6 km</p>
+                            <p>- Cách bến xe Lạng Sơn 1.6 km</p>
+                            <p>- Cách sân vận động Đông Kinh 1.8 km</p>
+                            <p>- Cách thị trấn Đồng Đăng 16 km</p>
+                            <p>- Cách cửa khẩu Hữu Nghị 17.5 km</p>
+                            <p>- Cách cửa khẩu Tam Thanh 27.3 km</p>
+                            <p>- Cách cửa khẩu Chi Ma 36 km</p>
+                            <p>- Cách các điểm du lịch trong thành phố Lạng Sơn chưa tới 10 phút đi xe</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="product" class="section ">
+                <div class="container">
+                    <div class="product_info">
+                        <h2 class="title">Kiến trúc sang trọng, tinh tế</h2>
+                        <p>
+                            Thiết kế của Apec Diamond Park gây ấn tượng bởi kết cấu mở đầy cảm hứng, đường nét tinh tế
+                            và quang cảnh xanh mát. Định hình bởi sự tinh xảo và thoải mái tuyệt đối cho các chủ
+                            nhân tương lai, dự án Apec Diamond Park chính là đích đến cho cuộc sống vương giả và
+                            hiện đại cho giới thượng lưu tại Lạng Sơn
+                        </p>
+                    </div>
+                    <div class="product_slide">
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc1.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc2.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc3.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc4.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc5.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc6.jpg" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture" class="section ">
+                <div class="container">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="product_info">
+                            <span>Shophouse Apec Diamond Park</span>
+                            <h2 class="title">Điểm hẹn phồn hoa, sinh lời bền vững</h2>
+                            <p>
+                                Tọa lạc ngay trên tuyến QL1A huyết mạch,shophouse vừa đảm bảo sự riêng tư, biệt lập của không gian sống trên các tầng lầu, vừa mở ra cơ hội giao thương sinh lời không giới hạn với nhiều ưu thế nổi bật của tầng triệt, sự kết hợp hoàn hảo của hai yếu tố "an cư" và "lạc nghiệp".
+                            </p>
+                        </div>
+
+                        <div class="shophouse_slide">
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/phonhoa.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/phonhoa2.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/bg_slide4.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/bg_slide5.jpg" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="product_info">
+                            <span>Apec Mandala Wyndham</span>
+                            <h2 class="title">Căn hộ khách sạn 5 sao quốc tế</h2>
+                            <p>
+                                Apec Mandala Wyndham Lạng Sơn là tổ hợp bất động sản thương mại dịch vụ và căn hộ khách sạn cao cấp và hoàn chỉnh đầu tiên tại Lạng Sơn vì thế dự án là biểu tượng của sự phồn hoa và hưng thịnh, hội tụ mọi giá trị sống mơ ước, mở ra nhiều cơ hội đầu tư quý giá cho những chủ nhân thời đại mới.
+                            </p>
+                        </div>
+
+                        <div class="wyndham_slide">
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/bg_slide5.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/bg_slide4.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/phonhoa.jpg" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="/assetsApecDiamonPark/images/phonhoa2.jpg" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section id="utilities" class="section ">
+                <div class="container">
+                    <div class="product_info">
+                        <h2 class="title">Tiện ích 5 sao - tiêu chuẩn sống quốc tế</h2>
+                        <p>
+                            Tiên phong khởi tạo chất sống thời thượng tại thành phố Lạng Sơn, Apec Diamond Park mang
+                            đến một thiên đường sống đích thực với hệ thống giải trí đa dạng theo tiêu chí "tất cả
+                            trong một", chỉ vài bước chân cư dân có thể hòa mình trong những con phố shophouse sầm
+                            uất quy hoạch kế bên TTTM Apec Center sôi động và hàng chục tiện ích nội khu.
+                        </p>
+                    </div>
+                    <div class="utilities_slide">
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc6.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc5.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc4.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc3.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc2.jpg" class="img-responsive">
+                        </div>
+                        <div class="item">
+                            <img src="/assetsApecDiamonPark/images/kientruc1.jpg" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="video" class="section ">
+                <div class="container">
+                    <div class="video wow slideInUp">
+                        <h2 class="title">Hình ảnh - Video</h2>
+
+                        <iframe width="800" height="450" class="video_desktop" src="https://www.youtube.com/embed/U-EsX4xJIoE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        <iframe width="100%" height="300" class="video_mobile" src="https://www.youtube.com/embed/U-EsX4xJIoE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        <iframe width="100%" height="500" class="video_tablet" src="https://www.youtube.com/embed/U-EsX4xJIoE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section id="news" class="section ">
+                <div class="container">
+                    <div class="col-md-7 big_news wow slideInLeft">
+                        <a href="http://kinhtevadubao.vn/chi-tiet/189-16322-shophouse-apec-diamond-park-gay-an-tuong-nho-tien-do-thi-cong-vuot-troi.html" target="_blank"><img src="/assetsApecDiamonPark/images/big_news2.jpeg" class="img-responsive"></a>
+                        <a href="http://kinhtevadubao.vn/chi-tiet/189-16322-shophouse-apec-diamond-park-gay-an-tuong-nho-tien-do-thi-cong-vuot-troi.html" target="_blank" class="title_news">Shophouse Apec Diamond Park gây ấn tượng nhờ tiến độ thi công vượt trội</a>
+                        <p>Không chỉ ghi điểm nhờ vị trí đắc địa, các tiện ích nội ngoại khu đa dạng, Apec Diamond Park còn gây ấn tượng với khách hàng nhờ pháp lý hoàn chỉnh và tiến độ thi công vượt trội.</p>
+                    </div>
+                    <div class="col-md-5 list_news wow slideInRight">
+                        <h2 class="title">Các tin khác</h2>
+                        <ul id="scrollbar">
+                            <li>
+                                <a href="https://baophapluat.vn/bat-dong-san/gan-duc-khoi-trong-nha-dau-tu-huong-den-cac-du-an-co-phap-ly-minh-bach-505487.html?fbclid=IwAR0SyldArRUh-usPNJbm4T7FOfRM9feWkO_p6iC44nGqCaV9p2_cDzrNikE" target="_blank">“Gạn đục khơi trong”, nhà đầu tư hướng đến các dự án có pháp lý minh bạch</a>
+                                <p>Cơn bão COVID-19 cùng loạt hành động siết chặt các quy trình, thủ tục đầu tư xây dựng của Nhà nước đang trở thành tấm lọc tự nhiên, “gạn đục khơi trong” cho thị trường bất động sản (BĐS). Bỏ đi những lớp quảng cáo hào nhoáng bên ngoài, các dự án có đầy đủ pháp lý và vừa túi tiền trở thành ưu tiên số một của các nhà đầu tư.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://cafef.vn/lang-son-co-khu-phuc-hop-cao-cap-dau-tien-voi-quy-mo-1600-can-ho-khach-san-5-sao-va-229-can-shophouse-20200401100401736.chn" target="_blank">Lạng Sơn có khu phức hợp cao cấp đầu tiên Apec Diamond Park</a>
+                                <p>Tổ hợp shophouse, căn hộ khách sạn và trung tâm thương mại 5 sao Apec Diamond Park có diện tích 5,5 ha, tọa lạc tại khu đất nhà máy xi măng Lạng Sơn (cũ) do IDJ Việt Nam làm chủ đầu tư đã chính thức ra mắt thị trường.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://phapluatxahoi.vn/phap-ly-minh-bach-apec-diamond-park-lang-son-hut-nha-dau-tu-183604.html?fbclid=IwAR2MKTggIy41izqq8pO2AI4oB3r-x4KXx-XGO5vHwvuWW_ieVZJgAyfn_eA" target="_blank">Pháp lý minh bạch, Apec Diamond Park Lạng Sơn hút nhà đầu tư</a>
+                                <p>Theo thông tin từ chủ đầu tư IDJ Việt Nam, ngày 10-03-2020, Apec Diamond Park - dự án nóng sốt nhất Lạng Sơn thời gian qua đã chính thức được cấp Giấy phép xây dựng.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://lsvn.vn/phap-ly-day-du-apec-diamond-park-lang-son-tang-suc-hut-voi-nha-dau-tu.html" target="_blank">Pháp lý đầy đủ, Apec Diamond Park Lạng Sơn tăng sức hút với nhà đầu tư</a>
+                                <p>LSVNO – Theo thông tin từ chủ đầu tư IDJ Việt Nam, ngày 10/3/2020, Apec Diamond Park – dự án nóng sốt nhất Lạng Sơn thời gian qua đã chính thức được cấp Giấy phép xây dựng.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://batdongsan.com.vn/tin-thi-truong/apec-diamond-park-lang-son-som-hoan-thien-tinh-phap-ly-ar103061" target="_blank">Apec Diamond Park Lạng Sơn sớm hoàn thiện tính pháp lý</a>
+                                <p>Thời gian qua, Apec Diamond Park đã nhận được sự quan tâm của đông đảo nhà đầu tư. Hiện dự án đã được cấp sổ đỏ, thẩm duyệt thiết kế phòng cháy chữa cháy, báo cáo đánh giá tác động môi trường và đang từng bước hoàn thiện pháp lý theo quy định.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://vnexpress.net/kinh-doanh/du-an-apec-diamond-park-lang-son-co-phap-ly-minh-bach-4038614.html" target="_blank">Dự án Apec Diamond Park Lạng Sơn có pháp lý minh bạch</a>
+                                <p>Chủ đầu tư khẳng định dự án đã có sổ đỏ, phê duyệt thiết kế phòng cháy chữa cháy và đang thẩm duyệt báo cáo tác động môi trường, giấy phép xây dựng.</p>
+                            </li>
+
+                            <li>
+                                <a href="http://thuonghieuvaphapluat.vn/du-lich-lang-son-phat-trien-dong-bo-de-giu-chan-du-khach-d28678.html" target="_blank">Du lịch Lạng Sơn: Phát triển đồng bộ để giữ chân du khách</a>
+                                <p>Lạng Sơn sở hữu "mỏ vàng" du lịch nhưng để khai thác được, cần phát triển đa dạng và đồng bộ hơn nữa các dịch vụ du lịch: lưu trú, trải nghiệm văn hóa bản địa,…</p>
+                            </li>
+
+                            <li>
+                                <a href="http://danviet.vn/nha-dat/chuoi-tien-ich-khung-tao-nen-khong-gian-song-dang-mo-uoc-tai-apec-diamond-park-1045054.html" target="_blank">Chuỗi tiện ích "khủng" tạo nên không gian sống đáng mơ ước tại Apec Diamond Park</a>
+                                <p>Sở hữu hệ thống tiện ích đa dạng, độc đáo, Apec Diamond Park Lạng Sơn hứa hẹn sẽ mang lại một không gian sống thượng lưu đáng mơ ước cho cư dân.</p>
+                            </li>
+
+                            <li>
+                                <a href="https://cafeland.vn/tin-tuc/apec-diamond-park-chi-tram-ty-dau-tu-tien-ich-84676.html" target="_blank">Apec Diamond Park chi trăm tỷ đầu tư tiện ích</a>
+                                <p>Sở hữu hệ thống tiện ích đa dạng, độc đáo, Apec Diamond Park Lạng Sơn hứa hẹn sẽ mang lại một không gian sống thượng lưu đáng mơ ước cho cư dân.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer" class="section" style="position: relative;">
+                <div class="main_footer">
+                    <div class="container">
+                        <div class="col-xs-12 col-sm-12 col-md-6 wow slideInDown" style="float: right;">
+                            <h1 class="title">Đăng ký nhận thông tin dự án</h1>
+                            <form action="" method="POST" role="form" style="padding: 10px 0 0;">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" placeholder="Họ tên">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="phone" placeholder="Điện thoại">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" cols="1" id="content" placeholder="Nội dung"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-success" id="btnSubmit" onclick="">Gửi đi</button>
+                                <button type="button" class="close">&times;</button>
+                                <p id="message"></p>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <div class="col-xs-12 col-sm-12 offset wow slideInDown">
+                                <h1 class="title">Đơn vị phát triển dự án</h1>
+                                <div class="col-sm-4 col-md-4 custom_logo">
+                                    <p class="text-center text-uppercase" style="color: #0F3C3A;font-weight: bold;">Chủ đầu tư</p>
+                                    <img src="/assetsApecDiamonPark/images/idj.png" class="img-responsive" style="height: 150px;margin: 0 auto;">
+
+                                </div>
+
+                                <div class="col-sm-4 col-md-4 custom_logo">
+                                    <p class="text-center text-uppercase" style="color: #0F3C3A;font-weight: bold;">Đơn vị phát triển dự án</p>
+                                    <img src="/assetsApecDiamonPark/images/apec.png" class="img-responsive" style="margin-top: 50px;">
+
+                                </div>
+
+                                <div class="col-sm-4 col-md-4 custom_logo">
+                                    <p class="text-center text-uppercase" style="color: #0F3C3A;font-weight: bold;">Đơn vị quản lý vận hành</p>
+                                    <img src="/assetsApecDiamonPark/images/wyndham.png" class="img-responsive">
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 offset wow slideInUp">
+                                <h1 class="title">Liên hệ</h1>
+                                <p>Hotline: 0911811833</p>
+                                <p>Email: contact@apec.com.vn</p>
+                                <p>Địa chỉ: Quốc lộ 1A, thuộc thôn Phai Duốc, Xã Mai Pha, thành phố Lạng Sơn</p>
+                            </div>
+                        </div>
+
+                        <div class="row note">
+                            <div class="container">
+                                <p>
+                                    *Thông số bản vẽ chỉ là tương đối hoặc đúng ở thời điểm hiện tại. Thông số chính thức của
+                                    từng căn sẽ được quy định trong văn bản ký kết giữa chủ đầu tư và khách hàng.
+                                </p>
+                                <p>*Hình ảnh sử dụng chỉ mang tính chất minh họa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="back-to-top"><i class="fa fa-angle-double-up fa-3x" title="Back to top" aria-hidden="true"></i></div>
+            </footer>
+        </div>
+
+    </div>
+    <script src="/assetsApecDiamonPark/js/jquery-3.3.1.min.js"></script>
+    <script src="/assetsApecDiamonPark/js/bootstrap.min.js"></script>
+    <script src="/assetsApecDiamonPark/js/TweenMax.min.js"></script>
+
+    <script src="/assetsApecDiamonPark/js/wow.js"></script>
+    <script src="/assetsApecDiamonPark/js/fullpage.min.js"></script>
+    <script src="/assetsApecDiamonPark/js/slick.min.js"></script>
+    <script src="/assetsApecDiamonPark/js/easings.min.js"></script>
+    <script src="/assetsApecDiamonPark/js/js.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+        function sendMail() {
+            let host = window.location.origin
+            let name = $("#name").val();
+            if (name == "") {
+                swal({
+                    title: "Vui lòng nhập họ tên",
+                    type: "error",
+                    confirmButtonClass: "btn-danger"
+                })
+                return false;
+            } else {
+                name = $("#name").val();
+            }
+
+            let email = $("#email").val();
+            if (email == "") {
+                swal({
+                    title: "Vui lòng nhập email",
+                    type: "error",
+                    confirmButtonClass: "btn-danger"
+                })
+                return false;
+            } else {
+                email = $("#email").val();
+            }
+
+            let phone = $("#phone").val();
+            if (phone == "") {
+                swal({
+                    title: "Vui lòng nhập số điện thoại",
+                    type: "error",
+                    confirmButtonClass: "btn-danger"
+                })
+                return false;
+            } else {
+                phone = $("#phone").val();
+            }
+
+            let content = $("#content").val();
+
+            $.ajax({
+                type: "POST",
+                url: "http://api.apec.com.vn:3000/api/send-email",
+                //The key needs to match your method's input parameter (case-sensitive).
+                data: JSON.stringify({
+                    site: host,
+                    name,
+                    phone,
+                    email,
+                    content
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#btnSubmit").attr('disabled', true);
+
+                    if (data.status === "OK")
+                        swal({
+                            type: "success",
+                            title: data.message,
+                            confirmButtonClass: "btn-success"
+                        })
+                    else
+                        swal({
+                            type: "error",
+                            title: data.message,
+                            confirmButtonClass: "btn-danger"
+                        })
+                },
+                failure: function (errMsg) {
+                    swal({
+                        type: "error",
+                        title: errMsg,
+                        confirmButtonClass: "btn-danger"
+                    })
+                }
+            });
+        }
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58CMPZR"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>

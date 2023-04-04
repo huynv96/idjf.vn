@@ -1,0 +1,162 @@
+@using MvcWeb.Models
+@model MvcWeb.Models.BlogPost
+@{
+    ViewBag.Title = Model.Title;
+    var listRelates = (List<BlogPost>)ViewBag.ListRelates;
+    var host = (string)ViewBag.Host;
+    var urlLang = (string) ViewBag.UrlLang;
+    var urlApply = urlLang.Contains("/vi") ? (urlLang + "/nop-don") : (urlLang + "/apply");
+    var shareFb = "https://www.facebook.com/sharer/sharer.php?u=" + host + Model.Permalink;
+    var shareTw = "https://twitter.com/intent/tweet?text=" + host + Model.Permalink;
+
+    string detail = "Chi tiết";
+    string title1 = "NƠI LÀM VIỆC";
+    string title2 = "CẤP BẬC";
+    string title3 = "HÌNH THỨC";
+    string title4 = "BẰNG CẤP";
+    string title5 = "KINH NGHIỆM";
+    string title6 = "MỨC LƯƠNG";
+    string title7 = "NGÀNH NGHỀ";
+    string title8 = "HẠN CHỐT NHẬN HỒ SƠ";
+    string apply = "Ứng tuyển ngay";
+    string tags = "Từ khoá ";
+    if (urlLang.Contains("/en"))
+    {
+         detail = "Detail";
+         title1 = "WORKPLACE";
+         title2 = "RANK";
+         title3 = "FORM";
+         title4 = "PROVIDED";
+         title5 = "EXPERIENCE";
+         title6 = "Salary";
+         title7 = "CAREER";
+         title8 = "ENDED";
+        apply = "APPLY NOW";
+        tags = "Tags";
+    }
+
+}
+<div class="banner">
+    <div class="img-container">
+        <img alt="" class="w-100" src="@(Model.Banner.ImageBanner.Media?.PublicUrl.Substring(1) ?? "" )">
+        <div class="img-centered-title">@Model.Banner.Title </div>
+        @if (!String.IsNullOrEmpty(Model.Banner.Title.Value))
+        {
+            <div class="img-centered-hr">
+                <img alt="" src="/images/hr.png">
+            </div>
+        }
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-t-40" id="body-content">
+                <a class="button-gradient-blue text-white text-uppercase">@Model.Category.Title</a>
+                <h2 class="m-t-30 font-size-30">@Model.Title</h2>
+                <div class="text-uppercase news-date ">@Model.Published.Value.ToString("dd-MM-yyyy")</div>
+                <hr>
+                <div class="jd m-b-40">
+                    @Html.DisplayFor(m => m.Blocks)
+                </div>
+                <a href="@urlApply" id="btn-apply" class="button-gradient-blue text-uppercase text-white">@apply <img alt="" src="/images/icons/arrow-right-white.png"></a>
+                <hr class="m-b-40">
+                <a href="@shareFb" target="_blank"><i class="fab fa-facebook-square fa-3x m-r-10"></i></a>
+                <a href="@shareTw" target="_blank"><i class="fab fa-twitter-square fa-3x m-r-10"></i></a>
+            </div>
+            <div class="col-md-4">
+                <div class="row m-t-30">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" name="keyword" id="searchKey" class="form-control input-search" placeholder="Search"> <i class="fas fa-search m-b-3 icon-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-30">
+                    <div class="col-md-12">
+                        <div class="menu-right">
+                            <span class="float-left">@detail </span>
+                            <span class="float-right hr-gray"></span>
+                            <span class="float-right hr-blue"></span>
+
+                        </div>
+                        <div class="row menu-content">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/1.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title1</div>
+                                <div class="font-color-989898">@Model.Recruit.Address</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/2.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title2</div>
+                                <div class="font-color-989898">@Model.Recruit.Level</div>
+                            </div>
+                        </div>
+
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/3.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title3</div>
+                                <div class="font-color-989898">@Model.Recruit.Form</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/4.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title4</div>
+                                <div class="font-color-989898">@Model.Recruit.Graduate</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/5.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title5</div>
+                                <div class="font-color-989898">@Model.Recruit.Exp</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/6.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title6</div>
+                                <div class="font-color-989898">@Model.Recruit.Salary</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/7.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title7</div>
+                                <div class="font-color-989898">@Model.Recruit.Job</div>
+                            </div>
+                        </div>
+                        <div class="row menu-content m-t-20">
+                            <div class="col-md-2 col-2"><img alt="" class="img-fluid p-t-5" src="/images/recruits/8.png"></div>
+                            <div class="col-md-10 col-10 font-size-18">
+                                <div class="text-uppercase">@title8</div>
+                                <div class="font-color-989898">@Model.Recruit.EndedDate.Value.Value.ToString("dd-MM-yyyy")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-30">
+                    <div class="col-md-12">
+                        <div class="menu-right">
+                            <span class="float-left">@tags </span>
+                            <span class="float-right hr-gray"></span>
+                            <span class="float-right hr-blue"></span>
+
+                        </div>
+                        <div class="row float-left">
+                            @foreach (var item in Model.Tags)
+                            {
+                                var url = item.Slug;
+                                <a title="" href="@url" class="form-control input-tag">@item.Title</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

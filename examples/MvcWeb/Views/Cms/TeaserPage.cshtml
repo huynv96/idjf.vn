@@ -1,0 +1,142 @@
+﻿@using Piranha.Models
+@model MvcWeb.Models.TeaserPage
+@{
+    ViewBag.Title = Model.Title;
+    var homeNews = (List<DynamicPost>) ViewBag.Posts;
+}
+
+<div id="home">
+    <div class="slides">
+        @Html.DisplayFor(m => m.Blocks)
+    </div>
+    <div class="who">
+        <div class="container">
+            <div class="row m-0">
+                <div class="col-md-6 p-70-0">
+                    <h1 class="who-span-title font-size-14">@Model.Intro.HeaderTitle</h1>
+                    <h2>@Model.Intro.CompanyName</h2>
+                    <p class="font-size-24">@Model.Intro.Title</p>
+                    <p class="font-size-16">@Model.Intro.SubTitle</p>
+                    <a title="" href="@Model.Intro.Link" class="button-gradient-blue text-white">@Model.Intro.TitleLink <img alt="" src="./images/icons/arrow-right-white.png"></a>
+                </div>
+                <div class="col-md-6 who-img-height">
+                    <img alt="" class="img-fluid who-img" src="@Url.Content(Model.Intro.Image?.Media.PublicUrl ?? "" )"/>
+                    <img alt="" class="img-fluid who-img-bg" src="./images/who_cricle.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fields">
+        <div class="container">
+            <div class="row">
+                @{ var i = 1; }
+                @foreach (var item in Model.BusinessModel)
+                {
+                    var number = "0" + i;
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <h4 class="fields-span-title">@number </h4>
+                            </div>
+                            <div class="col-md-2 ">
+                                <h4 class="fileds-border"></h4>
+                            </div>
+                            <div class="col-md-9">
+                                <h3 class="font-weight-bold">@item.Title</h3>
+                                <p>@item.SubTitle</p>
+                                @Html.Raw(item.Body)
+                            </div>
+                        </div>
+
+                    </div>
+                    i++;
+                }
+            </div>
+        </div>
+    </div>
+    <div class="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center text-white">
+
+                    <p class="font-color-D7D7D7">HOẠT ĐỘNG ĐẦU TƯ</p>
+                    <h2>Tại sao bạn nên lựa chọn công ty chúng tôi?</h2>
+                    <p class="font-size-16 font-color-D7D7D7">Trước xu thế toàn cầu hóa và cuộc cách mạng công nghệ đang từng bước làm thay đổi diện mạo nền kinh tế thế giới, với những tiềm năng và nỗ lực vượt trội, IDJ Investment đã bứt phá ngoạn mục, vươn lên trở thành Tập đoàn kinh tế đa ngành hàng đầu tại Việt Na</p>
+
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.InvestmentActivity)
+                {
+                    <div class="col-md-4 m-b-30">
+                        <div class="img-container">
+                            <img alt="" class="img-fluid" src="@Url.Content(item.Image.Media.PublicUrl)">
+                            <div class="img-top-left font-size-30 font-weight-bold">@item.Title</div>
+                            <div class="img-bottom-left">
+                                <a title="" href="#">
+                                    <img alt="" src="./images/icons/button-cricle.png">
+                                </a>
+                            </div>
+                            <div class="img-container-des">
+                                <img alt="" class="img-fluid" src="./images/projects/project-hover.png">
+                                <div class="img-top-left font-size-30 font-weight-bold">@item.Title</div>
+                                <div class="img-center-left">@item.SubTitle</div>
+                                <div class="img-bottom-left">
+                                    <a title="" href="#">
+                                        <img alt="" src="./images/icons/button-cricle-hover.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="news">
+        <div class="container">
+            <div class="row p-15-0">
+                <div class="col-md-12">
+                    <h2 class="who-span-title float-left text-dark">Tin tức nổi bật</h2>
+                    <a title="" href="tin-tuc" class="button float-right text-dark">Xem thêm <img alt="" src="./images/icons/arrow-right-black.png"></a>
+                </div>
+            </div>
+            <div class="row p-15-0 autoplay">
+                @foreach (var item in homeNews)
+                {
+                    <div class="col-md-12 p-b-10">
+                        <div class="news-border">
+                            <a title="" href="@item.Permalink">
+                                <div class="img-container">
+                                    <img alt="" class="img-full" src="@Url.Content(item.Regions.Hero.PrimaryImage.Media.PublicUrl)"/>
+                                    <div class="img-top-left font-size-10 text-uppercase">@item.Category.Title</div>
+                                </div>
+                                <div class="news-title">
+                                    <h4>
+                                        @if (item.Title.Length > 40)
+                                        {
+                                            @(item.Title.Substring(0, 40) + "...")
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+                                    </h4>
+                                    <hr>
+                                    <span class="news-date">@item.Published.Value.ToString("yyyy-MM-dd")</span>
+                                    <h5 class="float-right">
+                                        <button class="as-text" type="button" data-toggle="tooltip" data-html="true" title="<i class='fab fa-facebook-f'></i> <i class='fab fa-google-plus-g'></i> <i class='fab fa-twitter'></i> <i class='fab fa-instagram'></i>">
+                                            <img alt="" class="img-fluid" src="./images/icons/ic_share_24px.png"/>
+                                        </button>
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

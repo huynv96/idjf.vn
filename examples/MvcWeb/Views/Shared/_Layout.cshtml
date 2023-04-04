@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.Hosting
+@inject IWebHostEnvironment Env
+
+<!doctype html>
+<html lang="en">
+<head>
+    @if (!User.Identity.IsAuthenticated && !Env.IsDevelopment())
+    {
+        <!-- Insert Google Analytics here -->
+    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="~/images/icons/favicon.ico" type="x-icon"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i" type="text/css">
+    <link href="~/assets/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet" />
+    <link href="~/assets/js/slick/slick.css" rel="stylesheet" />
+    <link href="~/assets/js/slick/slick-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <title>@ViewBag.Title</title>
+
+    @if (Model is Piranha.Models.IMeta)
+    {
+        <partial name="Partial/_Meta.cshtml" />
+    }
+
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <header class="header">
+        <partial name="Partial/_Menu.cshtml" />
+    </header>
+
+    <section class="main-body">
+        @RenderBody()
+
+    </section>
+
+    <footer class="footer">
+        @await Component.InvokeAsync("Footer")
+    </footer>
+
+
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/js/slick/slick.js"></script>
+    <script defer src="~/assets/js/wow.js"></script>
+    <script defer src="~/assets/js/jquery.dataTables.min.js"></script>
+    <script defer src="~/assets/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162056498-1"></script>
+    <script src="~/assets/js/home.js"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-162056498-1');
+    </script>
+
+    @RenderSection("script", required: false)
+
+</body>
+</html>
